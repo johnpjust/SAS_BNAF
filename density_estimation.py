@@ -200,8 +200,8 @@ def compute_log_p_x(model, x_mb, training=False):
 
 # @tf.function
 def train(model, optimizer, scheduler, data_loader_train, data_loader_valid, args):
-    epoch = args.start_epoch
-    for epoch in range(args.start_epoch, args.start_epoch + args.epochs):
+
+    while True:
 
         # t = tqdm(data_loader_train, smoothing=0, ncols=80)
         train_loss = []
@@ -226,7 +226,7 @@ def train(model, optimizer, scheduler, data_loader_train, data_loader_valid, arg
         # print('Epoch {:3}/{:3} -- train_loss: {:4.3f} -- validation_loss: {:4.3f}'.format(
         #     epoch + 1, args.start_epoch + args.epochs, train_loss, validation_loss))
 
-        stop = scheduler.on_epoch_end(epoch=epoch, monitor=validation_loss)
+        stop = scheduler.on_epoch_end(epoch=0, monitor=validation_loss)
 
         if args.tensorboard:
             # with tf.contrib.summary.always_record_summaries():

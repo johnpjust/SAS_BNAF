@@ -133,9 +133,6 @@ def compute_log_p_x(model, x_mb):
     return log_p_y_mb + log_diag_j_mb
 
 
-class parser_:
-    pass
-
 def main():
     # config = tf.compat.v1.ConfigProto()
     # config.gpu_options.allow_growth = True
@@ -153,7 +150,7 @@ def main():
     with tf.device('cpu:0'):
         model = create_model(args)
 
-    model.set_weights(np.load(r'J:\SaS\2020\tensorboard\SAS2020_layers1_h12_flows6_resize0.1_boxsize[5 5 3]_gated_2020-05-13-14-49-03\chkpt\best-weights.npy', allow_pickle=True))
+    model.set_weights(np.load(r'J:\SaS\2020\tensorboard\SAS2020_layers1_h12_flows6_resize0.1_boxsize[5 5 3]_gated_2020-05-14-10-55-28\best_weights.npy', allow_pickle=True))
     out = init_model(model, imgs_raw[0])
     img_heatmap_ = functools.partial(img_heatmap, model, out[0].numpy().shape[-1])
     with Pool(16) as p:
